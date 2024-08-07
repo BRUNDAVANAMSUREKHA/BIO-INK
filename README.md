@@ -1,2 +1,2 @@
 # BIO-INK
-Ink is prepared from beetroot waste and its quality is assessed using five key parameters: pH value, viscosity, drying time, adhesion, and gloss level. This ensures effective performance and usability of the ink.
+Bio ink made from beetroot waste helps reduce food waste by repurposing organic byproducts into a usable ink., is assessed for quality through parameters like pH value, viscosity, drying time, adhesion, and gloss level. This ensures the ink is both effective and sustainable for printing applications.
