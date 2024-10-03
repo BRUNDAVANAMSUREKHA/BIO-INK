@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SustainableEats-JOINUS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('images/services.avif');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 400px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        h6 {
+            cursor: pointer;
+            font-size: 1.5em;
+            margin: 0;
+            padding: 10px;
+            transition: color 0.3s; /* Smooth transition for color change */
+        }
+
+        h6.active {
+            border-bottom: 2px solid #000;
+        }
+
+        /* Hover effect for headings */
+        h6:hover {
+            color: silver; /* Grey color on hover */
+        }
+
+        .form-container {
+            display: none;
+        }
+
+        .form-container.active {
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        input[type="tel"] {
+            display: block;
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px auto;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: #000;
+        }
+
+        input::placeholder {
+            color: #cccccc;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #000;
+            color: #cccccc;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition for background color */
+        }
+
+        /* Hover effect for buttons */
+        input[type="submit"]:hover {
+            background-color: #373737; /* Darker background on hover */
+        }
+
+        #captcha {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .otp-container {
+            display: none;
+        }
+
+        .otp-container.active {
+            display: block;
+        }
+
+        .otp-input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px auto;
+            border: 1px solid #000;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="header-container">
+            <h6 id="signin-heading" class="active">Sign In</h6>
+            <h6 id="signup-heading">Sign Up</h6>
+        </div>
+        <div class="form-container active" id="signin-form">
+            <form>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <div id="captcha"></div>
+                <input type="text" id="captcha-input" placeholder="Enter Captcha" required>
+                <input type="submit" value="Sign In">
+            </form>
+        </div>
+        <div class="form-container" id="signup-form">
+            <form id="signup-form-element">
+                <input type="text" placeholder="Username" required>
+                <input type="email" id="signup-email" placeholder="Enter Email" required>
+                <input type="button" id="verify-email-btn" value="Verify Email" onclick="sendEmailOTP()">
+                <div id="email-otp-container" class="otp-container">
+                    <input type="text" id="email-otp-input" class="otp-input" placeholder="Enter Email OTP" required>
+                    <input type="button" value="Submit Email OTP" onclick="verifyEmailOTP()">
+                </div>
+                <input type="password" placeholder="Password" required minlength="8">
+                <input type="password" placeholder="Confirm Password" required minlength="8">
+                <input type="tel" id="signup-mobile" placeholder="Enter Mobile Number" required>
+                <input type="button" id="verify-mobile-btn" value="Verify Mobile" onclick="sendMobileOTP()">
+                <div id="mobile-otp-container" class="otp-container">
+                    <input type="text" id="mobile-otp-input" class="otp-input" placeholder="Enter Mobile OTP" required>
+                    <input type="button" value="Submit Mobile OTP" onclick="verifyMobileOTP()">
+                </div>
+                <input type="submit" value="Sign Up">
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const signinForm = document.getElementById('signin-form');
+        const signupForm = document.getElementById('signup-form');
+        const signinHeading = document.getElementById('signin-heading');
+        const signupHeading = document.getElementById('signup-heading');
+        const captcha = document.getElementById('captcha');
+        const signupFormElement = document.getElementById('signup-form-element');
+        const signupEmail = document.getElementById('signup-email');
+        const signupMobile = document.getElementById('signup-mobile');
+        const emailOTPContainer = document.getElementById('email-otp-container');
+        const mobileOTPContainer = document.getElementById('mobile-otp-container');
+
+        // Function to generate a simple math CAPTCHA
+        function generateCaptcha() {
+            const num1 = Math.floor(Math.random() * 10);
+            const num2 = Math.floor(Math.random() * 10);
+            captcha.textContent = `What is ${num1} + ${num2}?`;
+            return num1 + num2;
+        }
+
+        // Generate initial CAPTCHA
+        let captchaAnswer = generateCaptcha();
+
+        signinHeading.addEventListener('click', () => {
+            signinForm.classList.add('active');
+            signupForm.classList.remove('active');
+            signinHeading.classList.add('active');
+            signupHeading.classList.remove('active');
+        });
+
+        signupHeading.addEventListener('click', () => {
+            signinForm.classList.remove('active');
+            signupForm.classList.add('active');
+            signinHeading.classList.remove('active');
+            signupHeading.classList.add('active');
+        });
+
+        signupFormElement.addEventListener('submit', (event) => {
+            const captchaInput = document.getElementById('captcha-input').value;
+            if (parseInt(captchaInput) !== captchaAnswer) {
+                event.preventDefault();
+                alert('Incorrect CAPTCHA. Please try again.');
+                captchaAnswer = generateCaptcha();
+            }
+        });
+
+        // Function to send email OTP
+        function sendEmailOTP() {
+            // Simulate sending OTP via email (replace with actual implementation)
+            const email = signupEmail.value;
+            if (email) {
+                // Generate OTP (here, a simple 4-digit number)
+                const otp = Math.floor(1000 + Math.random() * 9000);
+                alert(`OTP sent to ${email}: ${otp}`);
+                // Show OTP input field
+                emailOTPContainer.classList.add('active');
+                // Optionally, you can send otp to email
+            } else {
+                alert('Please enter an email address.');
+            }
+        }
+
+        // Function to verify email OTP
+        function verifyEmailOTP() {
+            const emailOTP = document.getElementById('email-otp-input').value;
+            // Simulate OTP verification (replace with actual implementation)
+            if (emailOTP) {
+                alert(`Email OTP verified: ${emailOTP}`);
+                // Optionally, validate OTP with backend or further actions
+            } else {
+                alert('Please enter the OTP received via email.');
+            }
+        }
+
+        // Function to send mobile OTP
+        function sendMobileOTP() {
+            // Simulate sending OTP via SMS (replace with actual implementation)
+            const mobile = signupMobile.value;
+            if (mobile) {
+                // Generate OTP (here, a simple 4-digit number)
+                const otp = Math.floor(1000 + Math.random() * 9000);
+                alert(`OTP sent to ${mobile}: ${otp}`);
+                // Show OTP input field
+                mobileOTPContainer.classList.add('active');
+                // Optionally, you can send otp to mobile
+            } else {
+                alert('Please enter a mobile number.');
+            }
+        }
+
+        // Function to verify mobile OTP
+        function verifyMobileOTP() {
+            const mobileOTP = document.getElementById('mobile-otp-input').value;
+            // Simulate OTP verification (replace with actual implementation)
+            if (mobileOTP) {
+                alert(`Mobile OTP verified: ${mobileOTP}`);
+                // Optionally, validate OTP with backend or further actions
+            } else {
+                alert('Please enter the OTP received via SMS.');
+            }
+        }
+
+    </script>
+</body

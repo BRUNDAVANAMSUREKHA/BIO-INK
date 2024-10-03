@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Site favicon -->
+    <link rel="icon" sizes="image/png" href="favicon/android-chrome-192x192.png">
+    <link rel="icon" sizes="image/png" href="favicon/android-chrome-512x512.png">
+    <link rel="icon" sizes="image/png" href="favcon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favcon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favcon/favicon-16x16.png">
+    <link rel="manifest" href="favcon/site.webmanifest">
+    <link rel="mask-icon" href="favcon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Basic Page Info -->
+    <meta charset="utf-8">
+    <title>INK SPECTRA</title>
+    <style>
+        body {
+            background-image: url('images/bg.png'); /* Specify the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            margin-top: 5px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0); /* Semi-transparent background for navbar */
+            backdrop-filter: blur(10px); /* Apply blur effect to navbar */
+            overflow: hidden;
+            z-index: 1000; /* Ensure navbar stays above other content */
+            display: flex;
+            justify-content: space-between; /* Align items to the ends */
+            align-items: center; /* Center items vertically */
+            padding: 10px 5px; /* Adjust padding for links */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0); /* Optional: Add subtle shadow */
+        }
+
+        .navbar h1 {
+            color: blue;
+            margin: 0;
+            font-weight: bold; /* Display name in bold */
+            margin-left: 10px; /* Move FOOD CONTROLLER to the left by 10px */
+            font-size: 35px;
+        }
+
+        .navbar a {
+            color: blue;
+            text-decoration: none;
+            padding: 10px 50px; /* Adjusted padding for links */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+            font-size: 23px;
+        }
+
+        .navbar a:hover {
+            background-color: blue; /* Semi-transparent white on hover */
+            color: white; /* Maintain text color on hover */
+            border-radius: 5px; /* Rounded corners on hover */
+        }
+
+        .login-box {
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Shadow effect */
+            height: 100%;
+            margin-top: 130px; /* Adjusted margin-top */
+            margin-right: 200px;
+            margin-left: 50px;
+        }
+
+        .login-box h1 {
+            margin-bottom: 20px;
+            color: blue;
+        }
+
+        .row {
+            display: flex;
+            height: 100%;
+            margin-top: 50px; /* Add margin-top to the row */
+        }
+
+        .col-md-6 {
+            flex: 0 0 50%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .navbar-brand {
+            text-decoration: none;
+        }
+
+        .navbar-brand h1 {
+            font-size: 50px;
+            color: #3792cb;
+            margin-top: 45px;
+        }
+
+        img {
+            margin-left: 80px;
+            margin-top: 25px; /* Add margin-top to the image */
+        }
+
+        .login-title h1 {
+            font-size: 35px;
+        }
+    </style>
+</head>
+
+<body class="login-page">
+    <div class="navbar">
+        <h1>INK SPECTRA - <br>QUALITY CHECKING WEBSITE....!</h1>
+        <div>
+            <a href="about.html">About Us</a>
+            <a href="join.html">JOIN Us</a>
+            <a href="qualitycheck.html">Check Quality</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <div class="login-wrap d-flex align-items-center flex-wrap justify-content-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="images/home.svg" alt="" width="90%" height="auto">
+                </div>
+                <div class="login-box bg-light box-shadow border-radius-12">
+                    <div class="login-title">
+                        <h1>Welcome to Ink-Checker!</h1>
+                        <br>
+                        <p><b>
+                            <h3>"Ink quality checking verifies color consistency, viscosity, adhesion, drying time, and opacity, ensuring consistent, fast-drying ink that adheres well to substrates, resists environmental factors, and meets regulatory standards. It optimizes printing processes and guarantees the production of durable, visually appealing materials."
+                            </h3>
+                        </b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleNav() {
+            var sidebar = document.getElementById("mySidebar");
+            sidebar.style.width = sidebar.style.width === "250px" ? "0" : "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+
+        function openPage(role) {
+            // Redirect to respective login pages based on the selected role
+            window.location.href = role;
+        }
+    </script>
+</body>
+<div style="bottom:0; background-color: #ffffff; color: #7b09df; text-align: center; padding: 10px 0; font-size: 0.8em;">
+    <p>Developed and maintained by <br> <a href="us.html">TEAM SSSS</a></p>
+</div>
+</html>

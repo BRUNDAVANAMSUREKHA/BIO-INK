@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Site favicon -->
+    <link rel="icon" sizes="image/png" href="favicon/android-chrome-192x192.png">
+    <link rel="icon" sizes="image/png" href="favicon/android-chrome-512x512.png">
+    <link rel="icon" sizes="image/png" href="favcon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favcon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favcon/favicon-16x16.png">
+    <link rel="manifest" href="favcon/site.webmanifest">
+    <link rel="mask-icon" href="favcon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style>
+        body {
+            background-image: url('images/beech.avif'); /* Specify the path to your background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            margin-top: 50px;
+        }
+        .content {
+            margin-top: 0px;
+            margin-left: 50px;
+            margin-right: 50px;
+            padding: 0px;
+        }
+        section {
+            padding: 20px;
+            color: black;
+            border: 2px solid #ccc; /* Add border styling */
+            margin-bottom: 20px; /* Add margin bottom for spacing */
+            overflow: hidden; /* Clear floats */
+        }
+        .section-text {
+            padding: 20px; /* Adjust internal padding */
+        }
+        p {
+            margin-top: 10px; /* Adjusted margin top for paragraph */
+            font-size: 24px;
+        }
+        b {
+            font-size: 30px;
+            color: green;
+        }
+        u {
+            color: blue;
+        }
+        img {
+            max-width: 100%; /* Make sure images don't exceed their container width */
+            padding: 20px 0; /* Add padding between sections */
+            border-radius: 50%;
+        }
+        .left {
+            float: left;
+            margin-right: 20px;
+        }
+        .right {
+            float: right;
+            margin-left: 20px;
+        }
+        .form-section {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            color: black;
+            border: 2px solid #ccc;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .form-section .form-container {
+            flex: 1;
+            margin-right: 20px; /* Adjust margin to create space between form and image */
+        }
+        .form-section img {
+            flex: 1;
+            max-width: 45%; /* Adjust max-width for a balanced layout */
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-container input, .form-container select {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .form-container button {
+            display: block;
+            margin: 10px auto; /* Center the button horizontally */
+            padding: 10px;
+            width: auto; /* Optional: Set a specific width if needed */
+            box-sizing: border-box;
+        }
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .reference-table th, .reference-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        .reference-table th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <section id="quality-check">
+            <img src="images/quality.png" alt="Quality Check Image" class="right">
+            <div class="section-text">
+                <br><br><br><br><br><br><b>Ink Quality Check:</b>
+                <p>Ink quality checking is crucial to ensure that the ink used in printing processes meets the required standards for performance and reliability. This process involves evaluating various parameters such as viscosity, drying time, adhesion, gloss level, and pH. By maintaining high ink quality, businesses can achieve superior printing results, reduce waste, and improve overall efficiency.</p>
+            </div>
+        </section>
+
+        <section id="parameter-brief">
+            <img src="images/quality.jpg" alt="Parameter Brief Image" class="left">
+            <div class="section-text">
+                <br><br><br><br><br><br><b>Brief Descriptions of Parameters:</b>
+                <p><u>Viscosity (cP):</u> Measures the thickness of the ink.</p>
+                <p><u>Drying Time (seconds):</u> Time taken for the ink to dry.</p>
+                <p><u>Adhesion (%):</u> Percentage of ink that adheres to the surface.</p>
+                <p><u>Gloss Level (%):</u> Measures the shine of the ink surface.</p>
+                <p><u>pH:</u> Measures the acidity or alkalinity of the ink.</p>
+            </div>        
+        </section>
+
+        <section id="quality-check-form" class="form-section">
+            <div class="form-container">
+                <b>Enter Values to Check Ink Quality:</b><br><br>
+                <form id="inkQualityForm">
+                    <label for="viscosity">Viscosity cP (8-12):</label>
+                    <input type="number" id="viscosity" name="viscosity" required>
+                    
+                    <label for="drying-time">Drying Time in seconds (25-35):</label>
+                    <input type="number" id="drying-time" name="drying-time" required>
+                    
+                    <label for="adhesion">Adhesion in % (90-100):</label>
+                    <input type="number" id="adhesion" name="adhesion" required>
+
+                    <label for="gloss-level">Gloss Level in % (80-90):</label>
+                    <input type="number" id="gloss-level" name="gloss-level" required>
+                    
+                    <label for="ph">pH (6.5-7.5):</label>
+                    <input type="number" id="ph" name="ph" min="0" max="14" step="0.1" required>
+                    
+                    <button type="submit">Check Quality</button>
+                </form>
+            </div>
+            <img src="images/quality_check.avif" alt="Form Image" class="right">
+        </section>
+        
+        <section id="reference-table">
+            <div class="section-text">
+                <b>Reference Values for Ink Quality:</b>
+                <p>To understand the acceptable ranges for each parameter, please refer to the reference table below. </p>
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Good</th>
+                            <th>Average</th>
+                            <th>Bad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Viscosity (cP)</td>
+                            <td>8-12</td>
+                            <td>6-8, 12-14</td>
+                            <td>Outside 6-14</td>
+                        </tr>
+                        <tr>
+                            <td>Drying Time (seconds)</td>
+                            <td>25-35</td>
+                            <td>20-25, 35-40</td>
+                            <td>Outside 20-40</td>
+                        </tr>
+                        <tr>
+                            <td>Adhesion (%)</td>
+                            <td>90-100</td>
+                            <td>85-90</td>
+                            <td>Below 85</td>
+                        </tr>
+                        <tr>
+                            <td>Gloss Level (%)</td>
+                            <td>80-90</td>
+                            <td>75-80, 90-95</td>
+                            <td>Outside 75-95</td>
+                        </tr>
+                        <tr>
+                            <td>pH Level</td>
+                            <td>6.5-7.5</td>
+                            <td>6.0-6.5, 7.5-8.0</td>
+                            <td>Outside 6.0-8.0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Function to check and categorize ink quality
+        function checkQuality() {
+            // Get form input values
+            var viscosity = parseInt(document.getElementById('viscosity').value);
+            var dryingTime = parseInt(document.getElementById('drying-time').value);
+            var adhesion = parseInt(document.getElementById('adhesion').value);
+            var glossLevel = parseInt(document.getElementById('gloss-level').value);
+            var ph = parseFloat(document.getElementById('ph').value);
+    
+            // Define ranges for each parameter
+            var viscosityRange = [8, 12];
+            var dryingTimeRange = [25, 35];
+            var adhesionRange = [90, 100];
+            var glossLevelRange = [80, 90];
+            var phRange = [6.5, 7.5];
+    
+            // Check if all values are within acceptable ranges
+            if (
+                viscosity >= viscosityRange[0] && viscosity <= viscosityRange[1] &&
+                dryingTime >= dryingTimeRange[0] && dryingTime <= dryingTimeRange[1] &&
+                adhesion >= adhesionRange[0] && adhesion <= adhesionRange[1] &&
+                glossLevel >= glossLevelRange[0] && glossLevel <= glossLevelRange[1] &&
+                ph >= phRange[0] && ph <= phRange[1]
+            ) {
+                alert("Ink quality is GOOD.");
+            } else {
+                alert("Ink quality is BAD or AVERAGE.");
+            }
+        }
+    
+        // Attach the checkQuality function to the form submission
+        document.getElementById('inkQualityForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+            checkQuality(); // Call the function to check ink quality
+        });
+    </script>    
